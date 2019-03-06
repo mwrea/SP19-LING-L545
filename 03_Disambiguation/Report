@@ -1,0 +1,11 @@
+<html>
+  <head> Comparison Report </head>
+  <body>
+    \n The first major difference between the two taggers is the amount of time required.
+    The Perceptron-based tagger completed extremely quickly in comparison with UDPipe,
+    which took around 10 minutes to finish. UDPipe also had more complex commands,
+    while the Perceptron tagger was 2 simple lines. As for the output, the UPOS
+    results had a higher degree of precision than Perceptron, but Perceptron's Lemmas,
+    XPOS, and features were all rated at 100% precision and F1 score by conll17_us_eval.py
+    </body>
+  </html>

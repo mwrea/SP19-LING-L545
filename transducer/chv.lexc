@@ -2,25 +2,23 @@ Multichar_Symbols
 
 %<n%>                ! Имя существительное
 %<pl%>               ! Множественное число
+%<gen%>              ! Genitive case
+%<nom%>              ! Именительный падеж
+%<ins%>              ! Творительный падеж
 %{A%}                ! vowel harmony
-%{н%}                ! Genitive case
+%{Ă%}
 %{м%}
+%<der_лӑх%>
 %>                   ! Граница морфемы
 
 LEXICON Root
 
 Nouns ;
 
-LEXICON Nouns
-
-урам%<n%>:урам N ;   ! "улица"
-пахча%<n%>:пахча N ;  ! "сад, garden "
-хула%<n%>:хула N ;  ! "город, city"
-канаш%<n%>:канаш N ;  ! "совет, council"
-
 LEXICON CASES
-
+%<nom%>: # ;
 %<ins%>:%>п%{A%} # ;
+%<gen%>:%>%{Ă%}н # ;
 
 
 LEXICON PLURAL
@@ -28,6 +26,27 @@ LEXICON PLURAL
              CASES ;
 %<pl%>:%>се%{м%} CASES ;
 
+LEXICON SUBST
+
+PLURAL ;
+
+
+LEXICON DER-N
+
+%<der_лӑх%>:%>л%{Ă%}х SUBST "weight: 1.0" ;
+
+
 LEXICON N
 
-%<n%>: PLURAL ;
+%<n%>: SUBST ;
+%<n%>: DER-N ;
+
+LEXICON Nouns
+патшалӑх:патшалӑх N ; ! "государство", "state"
+урам:урам N ;     ! "улица", "street"
+пахча:пахча N ;   ! "сад", "garden"
+хула:хула N ;     ! "город", "city"
+канаш:канаш N ;   ! "совет", "council"
+тӗс:тӗс N ;       ! "вид", "aspect"
+патша:патша N ;   ! "царь", "tsar"
+куҫ:куҫ N ;       ! "глаз", "eye"
