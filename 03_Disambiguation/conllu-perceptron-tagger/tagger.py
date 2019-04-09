@@ -45,7 +45,7 @@ class PerceptronTagger():
 				# sentence boundary
 				prev, prev2 = self.START
 #				print('s:',sentence)
-				for words in sentence:	
+				for words in sentence:
 					context = self.START + [self._normalise(w[1]) for w in sentence] + self.END
 					for i, token in enumerate(sentence):
 						tag = self.tagdict.get(token[1])
@@ -58,10 +58,10 @@ class PerceptronTagger():
 						prev2 = prev
 						prev = tag
 				# print out the tokens and their tags
-				for words in sentence:	
+				for words in sentence:
 					print('\t'.join(words))
 				print()
-				sentence = []	
+				sentence = []
 			elif line == '':
 				# we reached the end of the input
 				reading = False
@@ -74,11 +74,11 @@ class PerceptronTagger():
 				# normal conllu line
 				row = line.strip().split('\t')
 				sentence.append(row)
-				
+
 			# read the next line
 			line = corpus.readline()
 
-		return 
+		return
 
 	def train(self, sentences, save_loc=None, nr_iter=5):
 		'''Train a model from sentences, and save it at ``save_loc``. ``nr_iter``
@@ -164,7 +164,7 @@ class PerceptronTagger():
 		# It's useful to have a constant feature, which acts sort of like a prior
 		add('bias')
 		add('i suffix', word[-3:])
-		add('i pref1', word[0])
+                add('i pref1', word[0:])
 		add('i-1 tag', prev)
 		add('i-2 tag', prev2)
 		add('i tag+i-2 tag', prev, prev2)
@@ -172,7 +172,7 @@ class PerceptronTagger():
 		add('i-1 tag+i word', prev, context[i])
 		add('i-1 word', context[i-1])
 		add('i-1 suffix', context[i-1][-3:])
-		add('i-2 word', context[i-2])
+		add('i-2 word', contexto[i-2])
 		add('i+1 word', context[i+1])
 		add('i+1 suffix', context[i+1][-3:])
 		add('i+2 word', context[i+2])
@@ -202,7 +202,7 @@ class PerceptronTagger():
 ###############################################################################
 
 def tagger(corpus_file, model_file):
-	''' tag some text. 
+	''' tag some text.
 	:param corpus_file is a file handle
 	:param model_file is a saved model file
 	'''
@@ -210,7 +210,7 @@ def tagger(corpus_file, model_file):
 	t.tag(corpus_file)
 
 def trainer(corpus_file, model_file):
-	''' train a model 
+	''' train a model
 	:param corpus_file is a file handle
 	:param model_file is a saved model file
 	'''
@@ -229,7 +229,7 @@ def trainer(corpus_file, model_file):
 	t.train(sentences, save_loc=model_file, nr_iter=5)
 
 if len(sys.argv) == 3 and sys.argv[1] == '-t':
-	trainer(sys.stdin, sys.argv[2])	
+	trainer(sys.stdin, sys.argv[2])
 elif len(sys.argv) == 2:
 	tagger(sys.stdin, sys.argv[1])
 else:
