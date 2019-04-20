@@ -1,0 +1,4 @@
+After around five hours straight of working on the maxmatch algorithm, I have determined that it is far beyond my ability to produce, so my implemention remains unfinished.
+
+My plan was to first take a sentence, a dictionary of which were produced in the dict.txt file by my script dict.py, and increment slices from the beginning of it. I would begin by checking through the dictionary for only the first character, then the first two, and so on. Then, the program would decide which option was best based on which of the slices appeared most often in the dictionary. Finally, it would redefine the sentence to be itself minus the word that was chosen, then
+print the word.
